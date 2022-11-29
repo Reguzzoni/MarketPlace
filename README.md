@@ -1,14 +1,15 @@
 # MarketPlace
 Test Markeplace with sqlAlchemy
 
-# SQL
+## SQL
 Run sql file into postgres DB
 
-# MODULES
-## config
+## MODULES
+### config
 DB config file for your postgres connection
 
-## ENTITY
+### entity
 Entities map 1 to 1 to DB
 
+## MAIN
 test.py to test insert and select with SQL Alchemy By session
