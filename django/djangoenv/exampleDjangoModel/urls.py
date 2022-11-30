@@ -1,0 +1,1 @@
+#Django receives the URL, checks the urls.py file, and calls the view that matches the URL
