@@ -1,6 +1,7 @@
 # MarketPlace
 Test Markeplace with sqlAlchemy
 
+# SQL ALCHEMY
 ## SQL
 Run sql file into postgres DB
 
@@ -13,3 +14,7 @@ Entities map 1 to 1 to DB
 
 ## MAIN
 test.py to test insert and select with SQL Alchemy By session
+
+# FLASK
+app.py to run the application server
+hello.py to expose REST api
