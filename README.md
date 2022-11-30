@@ -25,7 +25,7 @@ hello.py to expose REST api
 
 --------------------------------------------------------------------------------
 
-#DJANGO
+# DJANGO
 ## VIEWS
 The view, located in views.py, checks for relevant models.
 The view then sends the data to a specified template in the template folder.
@@ -40,7 +40,7 @@ Django receives the URL, checks the urls.py file, and calls the view that matche
 HTML PAGE
 
 ## PROJECTS
-# MY WORLD
-# MEMBERS
+### MY WORLD
+### MEMBERS
 
 --------------------------------------------------------------------------------
