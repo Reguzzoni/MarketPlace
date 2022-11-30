@@ -24,3 +24,23 @@ app.py to run the application server
 hello.py to expose REST api
 
 --------------------------------------------------------------------------------
+
+#DJANGO
+## VIEWS
+The view, located in views.py, checks for relevant models.
+The view then sends the data to a specified template in the template folder.
+
+## MODELS
+The models are imported from the models.py file.
+
+## URLS
+Django receives the URL, checks the urls.py file, and calls the view that matches the URL
+
+## TEMPLATE
+HTML PAGE
+
+## PROJECTS
+# MY WORLD
+# MEMBERS
+
+--------------------------------------------------------------------------------
