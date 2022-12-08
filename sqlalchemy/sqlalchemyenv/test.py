@@ -38,13 +38,13 @@ def insert_market_data():
     import numpy as np
     # ********************* #
 
-    # Import Dataset
+    # Address
     file_name = r'C:\Users\rgiul\IdeaProjects\Giu_1\DATI\Output_tick\FX\6E\6E_full.txt'
 
-    # Import data from txt into pandas -> numpy dataset
+    # Import data from txt into pandas then numpy dataset
     def read_file(filename):
         df = pd.read_csv(filename)
-        #df = df[10:20]                       # <-- filter for dimension of dataset
+        df = df[10:20]                       # <-- filter for dimension of dataset
         df = df.reset_index(names='Index')
         df = np.array(df)
         return df
@@ -60,6 +60,7 @@ def insert_market_data():
     Volume = []
     Candela = []
 
+    # Lists filling from np-df
     for a in range(0,len(df)):
         Index.append(int(df[a,0]))
         Date_Time.append(str(df[a,1]))
