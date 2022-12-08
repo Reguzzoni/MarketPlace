@@ -1,16 +1,16 @@
 # ********************************************************************** #
 # * Sqlalchemy Project - Create DB                                     * #
-# * Insert data into DB -> postgres_python_marketplace_market_data_3   * #
+# * Insert data into DB -> aws-Data_Tick-marketplace-market_data       * #
 # ********************************************************************** #
 
-# ******************************************** #
+# ************************************************* #
 from datetime import datetime
 
 from sqlalchemy import select
 
 from entity.marketDataModel import MarketDataEntity
 from utils.DBUtils import get_session_from_db
-# ******************************************** #
+# ************************************************* #
 
 file_name = "crud.py"
 
@@ -38,12 +38,12 @@ def insert_market_data():
     import numpy as np
     # ********************* #
     # Import Dataset
-    file_name = r'C:\Users\rgiul\IdeaProjects\Giu_1\DATI\Output_tick\FX\6E\12\6E_tick_12-22.txt'
+    file_name = r'C:\Users\rgiul\IdeaProjects\Giu_1\DATI\Output_tick\FX\6E\6E_full.txt'
 
     # Import data from txt into pandas -> numpy dataset
     def read_file(filename):
         df = pd.read_csv(filename)
-        #df = df[10:20]
+        #df = df[10:20]                       # <-- filter for dimension of dataset
         df = df.reset_index(names='Index')
         df = np.array(df)
         return df
@@ -51,30 +51,33 @@ def insert_market_data():
     df = read_file(file_name)
 
     # Create lists of attributes
-    Indice = []
+    Index = []
     Date_Time = []
     Last = []
     Bid = []
     Ask = []
-    Volume =[]
+    Volume = []
+    Candela = []
 
     for a in range(0,len(df)):
-        Indice.append(int(df[a,0]))
+        Index.append(int(df[a,0]))
         Date_Time.append(str(df[a,1]))
         Last.append(float(df[a,2]))
         Bid.append(float(df[a,3]))
         Ask.append(float(df[a,4]))
         Volume.append(int(df[a,5]))
+        Candela.append(int(df[a,6]))
 
     # Class from list
     for b in range(0,len(df)):
         marekt_data_entity = MarketDataEntity(
-            Indice = Indice[b],
+            Index = Index[b],
             Date_Time = Date_Time[b],
             Last = Last[b],
             Bid = Bid[b],
             Ask =Ask[b],
-            Volume =Volume[b]
+            Volume =Volume[b],
+            Candela = Candela[b]
         )
         market_data_to_save.append(marekt_data_entity)
 
@@ -85,6 +88,7 @@ def insert_market_data():
     # commit the transaction to the DB
     session.commit()
     log("Committed to DB", method_name)
+
 
     # close session
     session.close()
@@ -99,12 +103,14 @@ def select_all_market_data():
     log("Connected to DB and got session", method_name)
 
     # get all market_data ordered by id
-    result = session.execute(select(MarketDataEntity).order_by(MarketDataEntity.Indice))
-    log("Select results from market_data_3 " + ' '.join(str(v) for v in result.scalars().all()), method_name)
+    result = session.execute(select(MarketDataEntity).order_by(MarketDataEntity.Index))
+    log("Select results from market_data " + ' '.join(str(v) for v in result.scalars().all()), method_name)
 
     # close session
     session.close()
     log("Closed session", method_name)
+
+    return result
 
 if __name__ == "__main__":
     # test insert
@@ -115,6 +121,8 @@ if __name__ == "__main__":
     print("START select_all_market_data")
     select_all_market_data()
     print("FINISHED select_all_market_data")
+
+
 
 
 """
