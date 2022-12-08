@@ -3,7 +3,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-
 def get_session_from_db():
     # Connect to database and schema
     engine = create_engine(
