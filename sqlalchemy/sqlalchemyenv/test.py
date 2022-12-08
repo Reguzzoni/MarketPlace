@@ -37,6 +37,7 @@ def insert_market_data():
     import pandas as pd
     import numpy as np
     # ********************* #
+
     # Import Dataset
     file_name = r'C:\Users\rgiul\IdeaProjects\Giu_1\DATI\Output_tick\FX\6E\6E_full.txt'
 
