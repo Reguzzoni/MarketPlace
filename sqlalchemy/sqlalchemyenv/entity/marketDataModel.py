@@ -3,7 +3,6 @@ from sqlalchemy import Column, Integer, Float, String
 
 Base = declarative_base()
 
-
 # Entity mapping 1 at 1 every row of table market_data
 class MarketDataEntity(Base):
     __tablename__='market_data'
